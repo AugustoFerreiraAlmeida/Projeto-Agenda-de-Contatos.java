@@ -1,0 +1,67 @@
+import java.util.Scanner;
+public class ProgramaQuestão4 {
+	public static void main(String[] args) {
+		Scanner ler = new Scanner(System.in);
+		Scanner lerN = new Scanner(System.in);
+		Contato [] contatos = new Contato[5];
+		for (int i = 0; i < 5; i++) {
+			Contato contato = new Contato();
+			System.out.println("DIGITE O NOME DO CONTATO ["+ i +"]");
+			contato.setNome(ler.nextLine());
+			System.out.println("DIGITE O NÚMERO DO CONTATO ["+ i + "]");
+			contato.setTelefone(ler.nextLine());
+			for(int confirmacao = 1; confirmacao == 1; ){
+				System.out.println("ESSE CONTATO ["+ i +"], É fixo ou celular? ");
+				String tipo = new String();
+				tipo = ler.nextLine();
+				if(tipo.equals("fixo")) {
+					contato.setTipo(Tipo.fixo);
+					confirmacao++;
+				}
+				else if(tipo.equals("celular")){
+					contato.setTipo(Tipo.celular);
+					confirmacao++;
+				}
+				else {
+					System.out.println("CONFIMA NOVAMENTE SE É fixo ou celular? ");
+				}
+			}
+			contatos[i] = contato;
+		}
+		System.out.println("---C-A-D-A-S-T-R-O---F-I-N-A-L-I-Z-A-D-O---");
+			for (int b = 1; b == 1;) {
+				System.out.println("DIGITE UMA POSIÇÃO: ");
+				int a = lerN.nextInt();
+				if(a < 6 && -1 < a){
+					for(int c = a; c < 6 && c > -1;){
+						System.out.println(contatos[c-1].getNome() + ", " + contatos[c-1].getTipo() + ":" + contatos[c-1].getTelefone());
+						break;
+					}
+				}
+				else if (a == -1) {
+					b = 0;
+					System.out.println("--ENCERRANDO---PROGRAMA--");
+				}
+				else {
+					System.out.println("ESSA POSIÇÃO NÃO É VÁLIDA: ");
+				}
+			}
+			System.out.print("Contatos Celular: ");
+		for(Contato contato: contatos){
+			if (contato.getTipo().equals(Tipo.celular)){
+				System.out.print(contato.getNome());
+				System.out.print("; ");
+			}
+		}
+		System.out.println("");
+		System.out.print("Contatos Fixo: ");
+		for(Contato contato: contatos){
+			if (contato.getTipo().equals(Tipo.fixo)){
+				System.out.print(contato.getNome());
+				System.out.print("; ");
+			}
+		}
+		System.out.println("");
+		System.out.println("---F-I-M---D-E---P-R-O-G-R-A-M-A---");
+	}
+}
